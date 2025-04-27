@@ -18,7 +18,7 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }))
 
 // MongoDB connection
-mongoose.connect("mongodb://localhost:27017/coursebygodofhell", {
+mongoose.connect("mongodb+srv://dhirajnishad:msdhiraj@1@coursebygodofhell.5jjbar8.mongodb.net/?retryWrites=true&w=majority&appName=coursebygodofhell", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
