@@ -127,7 +127,7 @@ generateKeyRouter.get("/:id/generate-key", async (req, res) => {
         });
 
         // Redirect to the original URL or another page
-        res.redirect(`https://coursebygodofhell.vercel.app/post/${shortner.shortId}`);
+        res.redirect(`https://coursebygodofhell.tech/post/${shortner.shortId}`);
     } catch (error) {
         console.error("Error generating key:", error.message);
         res.status(500).json({ error: "Failed to generate key" });
