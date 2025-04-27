@@ -6,6 +6,7 @@ const shortnerRouter = require("./routes/shortner");
 const AdminRouter = require("./routes/admin");
 const cookieparser = require("cookie-parser")
 const path = require("path")
+const dotenv = require("dotenv").config()
 
 const generateKeyRouter = require("./routes/generateKey");
 const accessFileRouter = require("./routes/accessFile");
@@ -18,7 +19,7 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }))
 
 // MongoDB connection
-mongoose.connect("mongodb+srv://dhirajnishad:msdhiraj@1@coursebygodofhell.5jjbar8.mongodb.net/?retryWrites=true&w=majority&appName=coursebygodofhell", {
+mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
