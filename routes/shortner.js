@@ -23,7 +23,7 @@ shortnerRouter.post("/shortner", async (req, res) => {
         console.log("Short URL Object Saved:", shortUrl);
 
         // Render the shortner.ejs template and pass the short URL
-        res.render("shorted.ejs", { shortId: `http://localhost:3000/post/${shortId}` });
+        res.render("shorted.ejs", { shortId: `https://humble-palm-tree-469wv55xw6w395p-3000.app.github.dev/post/${shortId}` });
     } catch (error) {
         console.error("Error shortening URL:", error.message);
         res.render("shortner.ejs", { shortid: null }); // Pass null if an error occurs
