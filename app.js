@@ -6,7 +6,6 @@ const shortnerRouter = require("./routes/shortner");
 const AdminRouter = require("./routes/admin");
 const cookieparser = require("cookie-parser")
 const path = require("path")
-const dotenv = require("dotenv").config()
 
 const generateKeyRouter = require("./routes/generateKey");
 const accessFileRouter = require("./routes/accessFile");
@@ -19,10 +18,7 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }))
 
 // MongoDB connection
-mongoose.connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-});
+mongoose.connect("mongodb://localhost:27017/coursebygodofhell",);
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 db.once("open", () => {
@@ -31,6 +27,9 @@ db.once("open", () => {
 
 // Routes
 app.use("/", generateKeyRouter);
+app.get("/", (req, res) => {
+    res.render("home.ejs")
+})
 app.use("/", accessFileRouter);
 app.use("/", shortnerRouter);
 app.use("/", AdminRouter);
