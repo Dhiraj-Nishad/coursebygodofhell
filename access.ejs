@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Access File</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .container {
+        background: #ffffff;
+        padding: 20px 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+      }
+      h1 {
+        text-align: center;
+        color: #333333;
+        margin-bottom: 20px;
+      }
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: #555555;
+      }
+      input[type="text"],
+      input[type="email"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+        font-size: 14px;
+      }
+      button {
+        width: 100%;
+        padding: 10px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #45a049;
+      }
+      .error {
+        color: red;
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
+      .info {
+        margin-bottom: 15px;
+        font-size: 14px;
+        color: #333333;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Access File</h1>
+      <div class="info">
+        <p><strong>Generated Key:</strong> <span id="key"><%= key %></span></p>
+        <p>
+          <strong>Drive Link:</strong>
+          <a href="<%= driveLink %>" target="_blank"><%= driveLink %></a>
+        </p>
+      </div>
+      <form id="accessForm">
+        <label for="email">Email Address</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Enter your email"
+          required
+        />
+
+        <label for="key">Access Key</label>
+        <input
+          type="text"
+          id="keyInput"
+          name="key"
+          value="<%= key %>"
+          readonly
+        />
+
+        <label for="driveLink">Google Drive Link</label>
+        <input
+          type="text"
+          id="driveLinkInput"
+          name="driveLink"
+          value="<%= driveLink %>"
+          readonly
+        />
+
+        <button type="submit">Submit</button>
+        <div class="error" id="error"></div>
+      </form>
+    </div>
+
+    <script>
+      document
+        .getElementById("accessForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          const email = document.getElementById("email").value;
+          const key = document.getElementById("keyInput").value;
+          const driveLink = document.getElementById("driveLinkInput").value;
+
+          try {
+            const response = await fetch("/access-file", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ email, key, driveLink }),
+            });
+
+            if (response.ok) {
+              alert(
+                "Access granted successfully! Check your email or download the file."
+              );
+            } else {
+              const errorData = await response.json();
+              document.getElementById("error").innerText =
+                errorData.error || "Something went wrong!";
+            }
+          } catch (err) {
+            document.getElementById("error").innerText =
+              "Failed to connect to the server.";
+          }
+        });
+    </script>
+  </body>
+</html>

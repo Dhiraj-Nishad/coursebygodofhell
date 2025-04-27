@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Access File</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    />
+    <style>
+      body {
+        background-color: #f8f9fa;
+        font-family: Arial, sans-serif;
+      }
+      .access-container {
+        max-width: 600px;
+        margin: 50px auto;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        border: 2px solid rgba(0, 0, 0, 0.514);
+        box-shadow: 2px 2px 2px 2px rgba(119, 118, 118, 0.671);
+        overflow: hidden;
+        padding: 5px;
+      }
+      .access-image img {
+        width: 100%;
+        height: auto;
+      }
+      .access-content {
+        padding: 20px;
+      }
+      .access-title {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+      .access-form {
+        margin-top: 20px;
+      }
+      .access-button {
+        width: 100%;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      .access-button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="access-container">
+      <!-- Image Section -->
+      <div class="access-image">
+        <img src="<%= imageurl %>" alt="<%= title %>" />
+      </div>
+
+      <!-- Content Section -->
+      <div class="access-content">
+        <h1
+          style="
+            color: red;
+            border: 1px solid rgba(0, 0, 0, 0.616);
+            border-radius: 10px;
+          "
+          ;
+        >
+          <%= title %>
+        </h1>
+        <p class="text-muted text-center">
+          Enter your GoogleDrive email to access the file
+        </p>
+
+        <!-- Form Section -->
+        <form
+          class="access-form"
+          action="/<%= shortid %>/access-file"
+          method="POST"
+        >
+          <div class="mb-3">
+            <label for="email" class="form-label">Email Address</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              name="email"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+          <button type="submit" class="access-button">Access Now</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
