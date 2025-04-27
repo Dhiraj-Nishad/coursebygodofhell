@@ -4,6 +4,7 @@ const { v4: uuidv4 } = require("uuid");
 const { google } = require("googleapis");
 const Key = require("../models/Key");
 const Shortner = require("../models/shortner.js");
+require("dotenv").config();
 
 const generateKeyRouter = express.Router();
 
