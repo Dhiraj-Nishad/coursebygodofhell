@@ -33,6 +33,9 @@ app.use("/", generateKeyRouter);
 app.use("/", accessFileRouter);
 app.use("/", shortnerRouter);
 app.use("/", AdminRouter);
+app.use((req, res) => {
+    res.render("error.ejs")
+})
 
 // Start the server
 const PORT = process.env.PORT || 3000;

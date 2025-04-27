@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 - Page Not Found</title>
+    <style>
+      /* General Reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #121212; /* Dark background */
+        color: #ffffff; /* Light text */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      .container {
+        text-align: center;
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 6rem;
+        color: #ff5252; /* Red for error */
+        margin-bottom: 20px;
+      }
+
+      p {
+        font-size: 1.5rem;
+        color: #b0bec5; /* Muted text color */
+        margin-bottom: 30px;
+      }
+
+      a {
+        text-decoration: none;
+        color: #ffffff;
+        background-color: #ff5252;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 1rem;
+        transition: background-color 0.3s ease;
+      }
+
+      a:hover {
+        background-color: #ff1744; /* Slightly darker red on hover */
+      }
+
+      .animation {
+        font-size: 8rem;
+        font-weight: bold;
+        color: #ff5252;
+        animation: pulse 1.5s infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(1.1);
+          opacity: 0.8;
+        }
+      }
+
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 4rem;
+        }
+
+        p {
+          font-size: 1.2rem;
+        }
+
+        .animation {
+          font-size: 6rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="animation">404</div>
+      <h1>Page Not Found</h1>
+      <p>Oops! The page you're looking for doesn't exist.</p>
+      <a href="/">Go Back to Home</a>
+    </div>
+  </body>
+</html>
